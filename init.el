@@ -48,7 +48,9 @@
   :config (counsel-projectile-mode))
 
 (use-package lsp-mode
-  :ensure t)
+  :ensure t
+  :hook ((ruby-mode . lsp-deferred)
+	 (go-mode . lsp-deferred)))
 
 (use-package tide
   :ensure t)
@@ -80,6 +82,12 @@
   :config (setq which-key-idle-delay 0.5))
 
 (use-package rustic
+  :ensure t)
+
+(use-package go-mode
+  :ensure t)
+
+(use-package janet-mode
   :ensure t)
 
 ;; UI changes
