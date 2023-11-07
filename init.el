@@ -90,6 +90,15 @@
 (use-package janet-mode
   :ensure t)
 
+(use-package elfeed
+  :ensure t
+  :bind (("C-x w" . elfeed))
+  :init (setq elfeed-feeds '("http://nullprogram.com/feed/"
+			     "https://cate.blog/feed"
+			     "https://danluu.com/atom.xml"
+			     "https://smallcultfollowing.com/babysteps/atom.xml"
+			     "https://eli.thegreenplace.net/feeds/all.atom.xml")))
+
 ;; UI changes
 (global-display-line-numbers-mode 1)
 (load-theme #'rebecca t)
