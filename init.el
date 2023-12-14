@@ -34,6 +34,12 @@
   :config
   (ivy-mode 1))
 
+(use-package swiper
+  :ensure t)
+
+(use-package counsel
+  :ensure t)
+
 (use-package projectile
   :ensure t
   :bind-keymap
@@ -47,11 +53,17 @@
 (use-package counsel-projectile
   :config (counsel-projectile-mode))
 
-(use-package lsp-mode
-  :ensure t
-  :hook ((ruby-mode . lsp-deferred)
-	 (go-mode . lsp-deferred)
-	 (clojure-mode . lsp-deferred)))
+(use-package lsp-ui
+  :ensure t)
+
+(use-package lsp-ivy
+  :ensure t)
+
+(use-package flycheck
+  :ensure t)
+
+(use-package company
+  :ensure t)
 
 (use-package tide
   :ensure t)
@@ -60,9 +72,6 @@
   :ensure t)
 
 (use-package rebecca-theme
-  :ensure t)
-
-(use-package swiper
   :ensure t)
 
 (use-package lsp-pyright
@@ -102,6 +111,22 @@
 			     "https://jvns.ca/atom.xml")))
 (use-package clojure-mode
   :ensure t)
+
+(use-package cider
+  :ensure t)
+
+(use-package dap-mode
+  :ensure t)
+
+(use-package lsp-mode
+  :bind-keymap
+  ("C-c l" . lsp-command-map)
+  :ensure t
+  :hook ((ruby-mode . lsp-deferred)
+	 (go-mode . lsp-deferred)
+	 (clojure-mode . lsp-deferred)
+	 (c-mode . lsp-deferred)
+	 (elisp-mode . lsp-deferred)))
 
 ;; UI changes
 (global-display-line-numbers-mode 1)
