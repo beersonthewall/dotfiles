@@ -50,7 +50,8 @@
 (use-package lsp-mode
   :ensure t
   :hook ((ruby-mode . lsp-deferred)
-	 (go-mode . lsp-deferred)))
+	 (go-mode . lsp-deferred)
+	 (clojure-mode . lsp-deferred)))
 
 (use-package tide
   :ensure t)
@@ -97,7 +98,10 @@
 			     "https://cate.blog/feed"
 			     "https://danluu.com/atom.xml"
 			     "https://smallcultfollowing.com/babysteps/atom.xml"
-			     "https://eli.thegreenplace.net/feeds/all.atom.xml")))
+			     "https://eli.thegreenplace.net/feeds/all.atom.xml"
+			     "https://jvns.ca/atom.xml")))
+(use-package clojure-mode
+  :ensure t)
 
 ;; UI changes
 (global-display-line-numbers-mode 1)
