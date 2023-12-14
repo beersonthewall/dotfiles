@@ -118,7 +118,13 @@
 (use-package dap-mode
   :ensure t)
 
+(use-package yasnippet
+  :ensure t)
+
 (use-package lsp-mode
+  :config
+  (setq lsp-yaml-schema-store-enable t)
+  (setq lsp-completion-enable t)
   :bind-keymap
   ("C-c l" . lsp-command-map)
   :ensure t
@@ -126,7 +132,8 @@
 	 (go-mode . lsp-deferred)
 	 (clojure-mode . lsp-deferred)
 	 (c-mode . lsp-deferred)
-	 (elisp-mode . lsp-deferred)))
+	 (elisp-mode . lsp-deferred)
+	 (yaml-mode . lsp-deferred)))
 
 ;; UI changes
 (global-display-line-numbers-mode 1)
@@ -143,4 +150,6 @@
       delete-old-versions t
       kept-new-versions 6
       version-control t)
+
+(server-start)
 
