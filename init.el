@@ -109,7 +109,17 @@
 			     "https://smallcultfollowing.com/babysteps/atom.xml"
 			     "https://eli.thegreenplace.net/feeds/all.atom.xml"
 			     "https://jvns.ca/atom.xml")))
+
 (use-package clojure-mode
+  :ensure t)
+
+(use-package paredit
+  :ensure t)
+
+(use-package rainbow-delimiters
+  :ensure t)
+
+(use-package tagedit
   :ensure t)
 
 (use-package cider
