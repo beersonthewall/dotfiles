@@ -114,7 +114,14 @@
   :ensure t)
 
 (use-package paredit
-  :ensure t)
+  :ensure t
+  :hook
+  ((emacs-lisp-mode . enable-paredit-mode)
+   (cider-mode . enable-paredit-mode)
+   (cider-repl-mode . enable-paredit-mode)
+   (lisp-mode . enable-paredit-mode)
+   (clojure-mode . enable-paredit-mode)
+   (clojurescript-mode . enable-paredit-mode)))
 
 (use-package rainbow-delimiters
   :ensure t)
