@@ -18,6 +18,11 @@
   :custom
   (straight-use-package-by-default t))
 
+(use-package ace-window
+  :ensure t
+  :bind
+  (("M-o" . ace-window)))
+
 (use-package magit
   :ensure t)
 
