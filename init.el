@@ -23,6 +23,13 @@
   :bind
   (("M-o" . ace-window)))
 
+(use-package multiple-cursors
+  :ensure t
+  :bind (("C-S-c C-S-c" . mc/edit-lines)
+	 ("C->" . mc/mark-next-like-this)
+	 ("C-<" . mc/mark-previous-like-this)
+	 ("C-c C-<" . mc/mark-all-like-this)))
+
 (use-package magit
   :ensure t)
 
@@ -150,7 +157,8 @@
   :bind-keymap
   ("C-c l" . lsp-command-map)
   :ensure t
-  :hook ((ruby-mode . lsp-deferred)
+  :hook ((rust-mode . lsp-deferred)
+	 (ruby-mode . lsp-deferred)
 	 (go-mode . lsp-deferred)
 	 (clojure-mode . lsp-deferred)
 	 (c-mode . lsp-deferred)
