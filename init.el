@@ -150,6 +150,19 @@
 (use-package yasnippet
   :ensure t)
 
+(use-package web-mode  :ensure t
+  :mode (("\\.js\\'" . web-mode)
+         ("\\.jsx\\'" . web-mode)
+         ("\\.ts\\'" . web-mode)
+         ("\\.tsx\\'" . web-mode)
+         ("\\.html\\'" . web-mode)
+         ("\\.vue\\'" . web-mode)
+	 ("\\.json\\'" . web-mode))
+  :commands web-mode
+  :config
+  (setq web-mode-content-types-alist
+	'(("jsx" . "\\.js[x]?\\'"))))
+
 (use-package lsp-mode
   :config
   (setq lsp-yaml-schema-store-enable t)
@@ -157,7 +170,8 @@
   :bind-keymap
   ("C-c l" . lsp-command-map)
   :ensure t
-  :hook ((rust-mode . lsp-deferred)
+  :hook ((web-mode . lsp-deferred)
+	 (rust-mode . lsp-deferred)
 	 (ruby-mode . lsp-deferred)
 	 (go-mode . lsp-deferred)
 	 (clojure-mode . lsp-deferred)
