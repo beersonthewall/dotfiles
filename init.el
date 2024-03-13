@@ -97,6 +97,9 @@
   :ensure t
   :init (setq vterm-kill-buffer-on-exit t))
 
+(use-package multi-vterm
+  :ensure t)
+
 (use-package which-key
   :ensure t
   :init (which-key-mode)
@@ -147,9 +150,6 @@
 (use-package dap-mode
   :ensure t)
 
-(use-package yasnippet
-  :ensure t)
-
 (use-package web-mode  :ensure t
   :mode (("\\.js\\'" . web-mode)
          ("\\.jsx\\'" . web-mode)
@@ -160,8 +160,7 @@
 	 ("\\.json\\'" . web-mode))
   :commands web-mode
   :config
-  (setq web-mode-content-types-alist
-	'(("jsx" . "\\.js[x]?\\'"))))
+  (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'"))))
 
 (use-package lsp-mode
   :config
@@ -178,6 +177,11 @@
 	 (c-mode . lsp-deferred)
 	 (elisp-mode . lsp-deferred)
 	 (yaml-mode . lsp-deferred)))
+
+(use-package yasnippet
+  :ensure t
+  :demand t
+  :config (yas-global-mode))
 
 ;; UI changes
 (global-display-line-numbers-mode 1)
