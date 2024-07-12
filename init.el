@@ -13,6 +13,7 @@
 
 (setq package-enable-at-startup nil)
 (straight-use-package 'use-package)
+(setq lsp-elixir-ls-version "v0.20.0")
 
 (use-package straight
   :custom
@@ -80,10 +81,10 @@
 (use-package tide
   :ensure t)
 
-(use-package web-mode
+(use-package rebecca-theme
   :ensure t)
 
-(use-package rebecca-theme
+(use-package solarized-theme
   :ensure t)
 
 (use-package lsp-pyright
@@ -91,6 +92,11 @@
   :hook (python-mode . (lambda ()
 			 (require 'lsp-pyright)
 			 (lsp))))
+
+(use-package pyvenv
+  :ensure t
+  :init
+  (setenv "WORKON_HOME" "~/.pyenv/versions"))
 
 (use-package vterm
   :commands vterm vterm-mode
@@ -128,10 +134,14 @@
 (use-package clojure-mode
   :ensure t)
 
+(use-package racket-mode
+  :ensure t)
+
 (use-package paredit
   :ensure t
   :hook
-  ((emacs-lisp-mode . enable-paredit-mode)
+  ((racket-mode . enable-paredit-mode)
+   (emacs-lisp-mode . enable-paredit-mode)
    (cider-mode . enable-paredit-mode)
    (cider-repl-mode . enable-paredit-mode)
    (lisp-mode . enable-paredit-mode)
@@ -156,36 +166,54 @@
          ("\\.ts\\'" . web-mode)
          ("\\.tsx\\'" . web-mode)
          ("\\.html\\'" . web-mode)
-         ("\\.vue\\'" . web-mode)
-	 ("\\.json\\'" . web-mode))
+         ("\\.vue\\'" . web-mode))
   :commands web-mode
   :config
   (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'"))))
+
+(use-package elm-mode
+  :ensure t)
+
+(use-package elixir-mode
+  :ensure t)
 
 (use-package lsp-mode
   :config
   (setq lsp-yaml-schema-store-enable t)
   (setq lsp-completion-enable t)
+  (setq lsp-clients-clangd-args '("-j=4" "-background-index" "--log=error" "--clang-tidy" "--enable-config"))
   :bind-keymap
   ("C-c l" . lsp-command-map)
   :ensure t
-  :hook ((web-mode . lsp-deferred)
-	 (rust-mode . lsp-deferred)
-	 (ruby-mode . lsp-deferred)
-	 (go-mode . lsp-deferred)
-	 (clojure-mode . lsp-deferred)
-	 (c-mode . lsp-deferred)
-	 (elisp-mode . lsp-deferred)
-	 (yaml-mode . lsp-deferred)))
+  :hook ((terraform-mode . lsp)
+	 (tide-mode . lsp)
+	 (racket-mode . lsp)
+	 (elixir-mode . lsp)
+	 (web-mode . lsp)
+	 (rust-mode . lsp)
+	 (ruby-mode . lsp)
+	 (go-mode . lsp)
+	 (clojure-mode . lsp)
+	 (c-mode . lsp)
+	 (elisp-mode . lsp)
+	 (yaml-mode . lsp)
+	 (elm-mode . lsp)
+	 (c++-mode . lsp)))
 
 (use-package yasnippet
   :ensure t
   :demand t
   :config (yas-global-mode))
 
+(use-package terraform-mode
+  :ensure t)
+
+(use-package markdown-mode
+  :ensure t)
+
 ;; UI changes
 (global-display-line-numbers-mode 1)
-(load-theme #'rebecca t)
+(load-theme #'solarized-light t)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (set-fringe-mode 10)
@@ -200,4 +228,6 @@
       version-control t)
 
 (server-start)
+
+(keybind-global-set "M-0" treemacs-switch-window)
 
