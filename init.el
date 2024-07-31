@@ -1,4 +1,5 @@
 (defvar bootstrap-version)
+;; comment
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
       (bootstrap-version 6))
