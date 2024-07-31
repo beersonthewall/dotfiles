@@ -177,6 +177,13 @@
 (use-package elixir-mode
   :ensure t)
 
+(use-package haskell-mode
+  :ensure t)
+
+(use-package lsp-haskell
+  :ensure t
+  :hook ((haskell-mode . lsp)))
+
 (use-package lsp-mode
   :config
   (setq lsp-yaml-schema-store-enable t)
