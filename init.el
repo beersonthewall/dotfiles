@@ -26,6 +26,10 @@
       kept-new-versions 6
       version-control t)
 
+(use-package zeno-theme
+  :straight t)
+(load-theme 'zeno)
+
 (use-package projectile
   :straight t
   :bind-keymap
@@ -79,7 +83,7 @@
 (use-package paredit
   :straight t)
 
-(use-package rainbw-delimiters
+(use-package rainbow-delimiters
   :straight t)
 
 ;; language *-mode and other programming language packages
@@ -158,3 +162,17 @@
 (use-package multi-vterm
   :straight t)
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("10fef6d73ae453f39c9f325915386d41894870b72926e8e9b0c39d030447b703"
+     default)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
