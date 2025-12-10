@@ -26,6 +26,11 @@
       kept-new-versions 6
       version-control t)
 
+(use-package yasnippet
+  :straight t
+  :demand t
+  :config (yas-global-mode))
+
 (use-package zeno-theme
   :straight t)
 (load-theme 'zeno)
