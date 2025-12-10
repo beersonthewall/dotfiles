@@ -76,7 +76,7 @@
 	 ("C-<" . mc/mark-previous-like-this)
 	 ("C-c C-<" . mc/mark-all-like-this)))
 
-(use-package paraedit
+(use-package paredit
   :straight t)
 
 (use-package rainbw-delimiters
